@@ -1,0 +1,39 @@
+---
+title: "Europe's Capitals"
+author: "R3M79"
+date: "7 de Março de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r loadLibraries,message=FALSE, warning=FALSE}
+library(jsonlite)
+library(leaflet)
+```
+
+```{r date }
+format(Sys.Date(), "%B %d %Y")
+```
+
+```{r getMapData}
+citiesLatLong<-fromJSON("http://techslides.com/demos/country-capitals.json")
+
+europe<-citiesLatLong[citiesLatLong$ContinentName=="Europe",]
+locations<-europe[,c("CapitalLatitude","CapitalLongitude")]
+names(locations)<-c("lat","lng")
+locations$lat<-as.numeric(locations$lat)
+locations$lng<-as.numeric(locations$lng)
+
+```
+
+```{r displayMay}
+locations %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(popup = europe$CapitalName)
+
+
+```
