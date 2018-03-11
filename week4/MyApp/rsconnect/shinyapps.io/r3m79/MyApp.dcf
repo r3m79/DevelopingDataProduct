@@ -1,0 +1,12 @@
+name: MyApp
+title: MyApp
+username:
+account: r3m79
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 297503
+bundleId: 1263422
+url: https://r3m79.shinyapps.io/MyApp/
+when: 1520795700.59023
+asMultiple: FALSE
+asStatic: FALSE

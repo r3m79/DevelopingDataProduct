@@ -1,0 +1,41 @@
+My App Presentation
+========================================================
+author: R3M79
+date: 2018/03/11
+autosize: true
+
+Overview
+========================================================
+
+This presentation will show the app developed for predicting 
+the Teeth Growth and is divided in the following way:
+
+- Summary of the data used in the models
+- Plot of Predictor Models
+- Preview of created App
+
+Dataset Summary
+========================================================
+
+```{r}
+summary(ToothGrowth)
+```
+
+Models plotting
+========================================================
+
+```{r, echo=FALSE}
+    dataSetOJ<-ToothGrowth[ToothGrowth$supp=="OJ",]
+    dataSetVC<-ToothGrowth[ToothGrowth$supp=="VC",]
+    modelOJ<-lm(len~dose,data=dataSetOJ)
+    modelVC<-lm(len~dose,data=dataSetVC)
+    plot(ToothGrowth$dose,ToothGrowth$len,xlab="Dose",ylab="Teeth Growth",main="Teeth Growht per Dose")
+    abline(modelOJ,col="red",lwd=2)
+    abline(modelVC,col="blue",lwd=2)
+    legend(x="topleft",legend=c("OJ Supp Prediction","VC Supp Prediction"),pch=16,col=c("red","blue"))
+
+```
+
+Preview
+========================================================
+![](MyAppPresentation-figure/MyApp.PNG)
